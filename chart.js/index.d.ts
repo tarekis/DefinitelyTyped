@@ -32,6 +32,8 @@ declare namespace Chart {
 
     export type ScaleType = 'category' | 'linear' | 'logarithmic' | 'time' | 'radialLinear';
 
+    export type InteractionMode = 'point' | 'nearest' | 'single' | 'label' | 'index' | 'x-axis' | 'dataset' | 'x' | 'y';
+
     export interface ChartLegendItem {
         text?: string;
         fillStyle?: string;
@@ -145,7 +147,11 @@ declare namespace Chart {
     export interface ChartTooltipOptions {
         enabled?: boolean;
         custom?: (a: any) => void;
-        mode?: string;
+        mode?: InteractionMode
+        intersect?: boolean;
+        position?: string;
+        itemSort?: (a: ChartTooltipItem, b: ChartTooltipItem, data?: any) => number
+        filter?: (element: ChartTooltipItem, data?: any) => boolean
         backgroundColor?: ChartColor;
         titleFontFamily?: string;
         titleFontSize?: number;
@@ -169,6 +175,7 @@ declare namespace Chart {
         caretSize?: number;
         cornerRadius?: number;
         multiKeyBackground?: string;
+        displayColors?: boolean;
         callbacks?: ChartTooltipCallback;
     }
 
